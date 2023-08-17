@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "project-umezawa"
+version = "0.1.0"
+description = "Streamlit application for doing things Magic The Gathering related"
+authors = ["wookiee89 <jay.r.jain@gmail.com>"]
+readme = "README.md"
+packages = [{include = "project_umezawa"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.25.0"
+requests = "^2.31.0"
+pandas = "^2.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
