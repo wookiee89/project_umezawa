@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 st.set_page_config(
-    layout="wide"
+    layout="wide",
     page_title="MTG Stuffs"
     )
 
