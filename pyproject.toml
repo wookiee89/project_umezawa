@@ -10,6 +10,7 @@ python = "^3.11"
 streamlit = "^1.25.0"
 requests = "^2.31.0"
 pandas = "^2.0.3"
+streamlit-aggrid = "^0.3.4.post3"
 
 
 [build-system]
