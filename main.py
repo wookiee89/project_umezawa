@@ -2,7 +2,11 @@ import requests
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide"
+    page_title="MTG Stuffs"
+    )
+
 
 setList = ['']
 
