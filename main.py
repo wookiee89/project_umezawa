@@ -23,7 +23,7 @@ for setName in sets:
 
 with st.sidebar:    
     set = st.selectbox('Select a set', setList, index=1)
-    viewOption = st.selectbox('How would you like to view the set?', ['List', 'Images'], index=1)
+    viewOption = st.selectbox('How would you like to view the set?', ['List', 'Images'], index=1)  # noqa: E501
     
 # Initialize or reset page number based on the set selection
 if 'previous_set' not in st.session_state or st.session_state.previous_set != set:
@@ -32,10 +32,10 @@ if 'previous_set' not in st.session_state or st.session_state.previous_set != se
 
 cardList = ['']
 
-cards = requests.get("https://api.scryfall.com/cards/search?q=set%3A"+set.split(' - ')[1]).json()['data']
+cards = requests.get("https://api.scryfall.com/cards/search?q=set%3A"+set.split(' - ')[1]).json()['data']  # noqa: E501
 
 st.write('There are', len(cards), 'cards in this set')
-df = pd.DataFrame(cards, columns=['image_uris', 'name', 'mana_cost', 'type_line', 'oracle_text', 'power', 'toughness', 'loyalty', 'colors', 'color_identity', 'rarity', 'set_name', 'collector_number',])
+df = pd.DataFrame(cards, columns=['image_uris', 'name', 'mana_cost', 'type_line', 'oracle_text', 'power', 'toughness', 'loyalty', 'colors', 'color_identity', 'rarity', 'set_name', 'collector_number',])  # noqa: E501
 
 df.image_uris = df['image_uris'].apply(lambda x: x['large'])
     
@@ -95,14 +95,14 @@ if viewOption == 'Images':
     # Create two columns: one as a spacer and one for the actual pagination
     spacer_col, pagination_col = st.columns([4, 1])
 
-    # Inside the pagination column, create columns for the Previous button, page display, and Next button
+    # Inside the pagination column, create columns for the Previous button, page display, and Next button  # noqa: E501
     with pagination_col:
 
         prev_button_col, page_display_col, next_button_col = st.columns([.5, .33, .5])
 
         # "Previous" button
         with prev_button_col:
-            if st.button('Previous', on_click=on_previous, disabled=st.session_state.current_page == 0):
+            if st.button('Previous', on_click=on_previous, disabled=st.session_state.current_page == 0):  # noqa: E501
                 pass  # The action is handled in the on_click function
 
         # Display current page and total pages
@@ -111,5 +111,5 @@ if viewOption == 'Images':
 
         # "Next" button
         with next_button_col:
-            if st.button('Next', on_click=on_next, disabled=st.session_state.current_page == total_pages - 1):
+            if st.button('Next', on_click=on_next, disabled=st.session_state.current_page == total_pages - 1):  # noqa: E501
                 pass  # The action is handled in the on_click function
