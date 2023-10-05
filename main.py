@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 import streamlit as st
-import base64
 
 
 st.set_page_config(
@@ -10,14 +9,11 @@ st.set_page_config(
     )
 
 
-# ========== Begin session state initialization ==========
-# Initialize session states if they don't exist
 if 'current_page' not in st.session_state:
     st.session_state.current_page = 0
 if 'page' not in st.session_state:
     st.session_state.page = 0
-
-
+    
 setList = ['']
 
 sets = requests.get("https://api.scryfall.com/sets").json()['data']
@@ -41,9 +37,8 @@ cards = requests.get("https://api.scryfall.com/cards/search?q=set%3A"+set.split(
 st.write('There are', len(cards), 'cards in this set')
 df = pd.DataFrame(cards, columns=['image_uris', 'name', 'mana_cost', 'type_line', 'oracle_text', 'power', 'toughness', 'loyalty', 'colors', 'color_identity', 'rarity', 'set_name', 'collector_number',])
 
-
 df.image_uris = df['image_uris'].apply(lambda x: x['large'])
-
+    
 if viewOption == 'List':
     st.dataframe(df,
                 column_config={
@@ -55,7 +50,6 @@ if viewOption == 'List':
                     },
                 hide_index=True,  
                 )
-
 
 # Number of cards per page
 CARDS_PER_PAGE = 8
